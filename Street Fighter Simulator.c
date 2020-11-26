@@ -1,8 +1,18 @@
+/* 
+This is basically a Street Fighter Simulator that I developed for my algorithm class at FATEC-CAMP. 
+The language used is C.
 
-#include <stdio.h>
+-You have 2 rounds
+-Ken uses negative numbers while Ryu uses positive numbers
+-Both characters can give as many attacks as they want but the round is over when any of them enters 0
+-If the value entered is a Perfect Number it is multiplied by 3 and if it is a Triangular Number it's multriplied by 2
+-The winner will be who gave more damage
 
+/*
 
-int perfeito(int golp)       /* Função para verificar se o valor do golpe é perfeito ou não, recebe o golpe digitado como argumento e retorna 1 ou 0 dependendo do resultado */
+#include <stdio.h> 
+
+int perfeito(int golp)      /* Function to verify if the value of the attack is a perfect number */
 {
     int i,somaDiv, aux;
     aux = 0;
@@ -22,7 +32,7 @@ int perfeito(int golp)       /* Função para verificar se o valor do golpe é perf
         return 0;
     }
 }
-int triangulo(int golp)      /* Função para verificar se o valor do golpe é um triangulo ou não, recebe o golpe digitado como argumento e retorna 1 ou 0 dependendo do resultado */
+int triangulo(int golp)      /* Function to verify if the value of the attack is a triangular number */
 {
     int aux, i;
     for(i = 1, aux = 0; (i*(i+1)*(i+2)) < golp+1; i++)
@@ -38,31 +48,31 @@ int triangulo(int golp)      /* Função para verificar se o valor do golpe é um t
     }
 }
 
-void main ()                /* Main, aonde acontece a entrada de golpes, resultado, verificações de resultado e atribuições */
+void main ()                /* Main */
 {
     int i, ryuR, kenR, ryu = 0, ken = 0, aux = 0, golpe;
 
-    printf("-----                Simulador Street Fighter                             ----");
+    printf("-----                Simulador Street Fighter                             ----");          /* Introduction for the user */ 
     printf("\n----- Entre com os valores dos golpes de RYU utilizando numeros positivos ----");
-    printf("\n----- Entre com os valores dos golpes de KEN utilizando numeros negativos ----");
+    printf("\n----- Entre com os valores dos golpes de KEN utilizando numeros negativos ----");          
     printf("\n-----             *** PARA ENCERRAR O ROUND ENTRE COM 0 ***               ----");
     printf("\n------------------------------------------------------------------------------");
 
-    for(i = 1; i <= 2; i++)   /* For para controlar a repetição de rounds, no caso dois rounds */
+    for(i = 1; i <= 2; i++)   /* For to control the rounds */
     {
         printf("\n--------------------------------- ROUND %d  -----------------------------------\n", i);
-        do                    /* Do que só para quando o usuário finaliza o round digitando 0 */
+        do                    /* Do While that stops the round when a value 0 is entered */
         {
             scanf("%d", &golpe);
             if(golpe >= 1)
             {
                 if((perfeito(golpe)) == 1)
                 {
-                    ryu += (golpe * 3);       /* Condição de multiplicação */
+                    ryu += (golpe * 3);       /* Multiplication factor  */
                 }
                 else if(((triangulo(golpe)) == 1))
                 {
-                    ryu += (golpe * 2);        /* Condição de multiplicação */
+                    ryu += (golpe * 2);         /* Multiplication factor  */
                 }
                 else
                 {
@@ -73,11 +83,11 @@ void main ()                /* Main, aonde acontece a entrada de golpes, resulta
             {
                 if((perfeito(golpe)) == 1)
                 {
-                    ken += (golpe * 3);       /* Condição de multiplicação */
+                    ken += (golpe * 3);        /* Multiplication factor  */
                 }
                 else if(((triangulo(golpe)) == 1))
                 {
-                    ken += (golpe * 2);       /* Condição de multiplicação */
+                    ken += (golpe * 2);        /* Multiplication factor  */
                 }
                 else
                 {
@@ -86,14 +96,14 @@ void main ()                /* Main, aonde acontece a entrada de golpes, resulta
             }
         }
         while (golpe != 0);
-    aux =  (ken * -1); /* Conversão do valor da variavel ken (é negativa, e se torna positiva para verificação do vencedor) */
-    ken = aux;         /* Atribuição da conversão */
+    aux =  (ken * -1); /* Conversion of the Ken variable */ 
+    ken = aux;         /* Atribution of the result */ 
     if(ken > ryu){
-        kenR++;        /* Atribuição de vitoria por round */
+        kenR++;        /* Atribution per round */ 
     }else if(ryu > ken){
         ryuR++;
     }
-    ryu = 0;           /* Zerando pontuação de golpes para o novo round que iniciara */
+    ryu = 0;           /* Turning the round value to 0 for the new round */
     ken = 0;
     }
 
