@@ -1,3 +1,7 @@
+*/
+Programa para calcular o preço a pagar, e o desconto, de acordo com a quantidade de unidades.    
+*/
+
 #include <stdio.h>
 
 int main()
