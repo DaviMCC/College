@@ -1,3 +1,9 @@
+*/
+Um programa que processa diversos pedidos feitos na loja de material de construção. Em cada pedido são solicitados até três itens diferentes, idenficados pelo seu código
+Ao final do processamento todo, é possivel emitir um relatório de vendas com as seguintes informações: numeros de unidade de cada produto, produto mais vendido
+total vendido em reais, e numero de pedidos processados. 
+*/
+
 #include <stdio.h>
 
 int main ()
